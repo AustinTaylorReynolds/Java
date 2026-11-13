@@ -29,7 +29,7 @@ public final class Pow {
         }
         long result = 1;
         for (int i = 1; i <= b; i++) {
-            result *= a;
+            result = Math.multiplyExact(result, a);
         }
         return result;
     }

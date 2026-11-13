@@ -33,4 +33,17 @@ public class PowTest {
     void testPowHandlesOneBase() {
         assertEquals(1, Pow.pow(1, 100));
     }
+
+        @Test
+    void testPowThrowsExceptionOnOverflow() {
+        assertThrows(ArithmeticException.class, () -> Pow.pow(2, 63));
+        assertThrows(ArithmeticException.class, () -> Pow.pow(10, 19));
+    }
+
+    @Test
+    void testPowHandlesLargestResultsThatFitInLong() {
+        assertEquals(4611686018427387904L, Pow.pow(2, 62));
+        assertEquals(1000000000000000000L, Pow.pow(10, 18));
+        assertEquals(Long.MIN_VALUE, Pow.pow(-2, 63));
+    }
 }
